@@ -3,6 +3,7 @@
 import com.orbitz.consul.Consul;
 import com.orbitz.consul.KeyValueClient;
 import org.yaml.snakeyaml.Yaml;
+import com.google.common.net.HostAndPort;
 
 def call(Map config = [:]) {
 
