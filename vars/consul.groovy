@@ -13,7 +13,7 @@ def call(Map config = [:]) {
         String hostAndPort = System.getProperty("consul.address", hostWithPort);
         Consul consul = Consul.builder()
                               .withHostAndPort(HostAndPort.fromString(hostAndPort))
-                              .withConnectTimeoutMillis(5000)
+                              .withConnectTimeoutMillis(60000)
                               .build();
         KeyValueClient client = consul.keyValueClient();
         response = client.putValue("test-module.default.testKey", "1000");
