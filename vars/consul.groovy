@@ -8,7 +8,7 @@ def call(Map config = [:]) {
 
     if (config.hostName != null && config.portNumber != null && config.fileName != null) {
         Yaml yaml = new Yaml();
-        String hostAndPort = hostName+":"+portNumber;
+        String hostAndPort = config.hostName+":"+config.portNumber;
         Consul consul = Consul.builder()
                               .withHostAndPort(hostAndPort)
                               .withConnectTimeoutMillis(5000)
