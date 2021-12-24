@@ -8,14 +8,15 @@ def call(Map config = [:]) {
 
     if (config.hostName != null && config.portNumber != null && config.fileName != null) {
         Yaml yaml = new Yaml();
-        String hostAndPort = config.hostName+":"+config.portNumber;
+        String hostWithPort = config.hostName+":"+config.portNumber;
+        String hostAndPort = System.getProperty("consul.address", hostWithPort);
         Consul consul = Consul.builder()
-                              .withHostAndPort(hostAndPort)
+                              .withHostAndPort(HostAndPort.fromString(hostAndPort))
                               .withConnectTimeoutMillis(5000)
                               .build();
         KeyValueClient client = consul.keyValueClient();
-        response = client.putValue("test-module.default.testKey", "1000")
-        println(response)
+        response = client.putValue("test-module.default.testKey", "1000");
+        println(response);
 
     }
 
