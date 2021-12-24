@@ -6,7 +6,7 @@ import org.yaml.snakeyaml.Yaml;
 
 def call(Map config = [:]) {
 
-    if (config.hostName != null && portNumber != null && config.fileName != null) {
+    if (config.hostName != null && config.portNumber != null && config.fileName != null) {
         Yaml yaml = new Yaml();
         String hostAndPort = hostName+":"+portNumber;
         Consul consul = Consul.builder()
